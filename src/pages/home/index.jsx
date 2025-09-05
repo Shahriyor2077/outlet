@@ -11,7 +11,7 @@ const Home = () => {
     if (id) {
       axios
         .get(`https://dummyjson.com/products/${id}`)
-        .then((res) => setData({ users: [res.data] }));
+        .then((res) => setData({ products: [res.data] }));
     } else {
       axios.get("https://dummyjson.com/products").then((res) => setData(res.data));
     }
