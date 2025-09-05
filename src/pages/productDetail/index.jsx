@@ -6,8 +6,8 @@ const ProductDetail = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  //   const { pathname } = useLocation();
-  //   console.log(pathname.split("/").pop());
+  //   const {  } = useLocation();
+  //   console.log(.split("/").pop());
 
   const { id } = useParams();
   // console.log(id);

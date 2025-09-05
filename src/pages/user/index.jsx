@@ -1,22 +1,23 @@
-// const User = () => {
-//   return <div>User</div>;
-// };
-
-// export default User;
-
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Home = () => {
   const [data, setData] = useState(null);
   const navigate = useNavigate();
+  const { id } = useParams();
 
   useEffect(() => {
-    axios
-      .get("https://dummyjson.com/users")
-      .then((res) => setData(res.data));
-  }, []);
+    if (id) {
+      axios
+        .get(`https://dummyjson.com/users/${id}`)
+        .then((res) => setData({ users: [res.data] }));
+    } else {
+      axios
+        .get("https://dummyjson.com/users")
+        .then((res) => setData(res.data));
+    }
+  }, [id]);
 
   return (
     <div className="p-6">
@@ -25,7 +26,7 @@ const Home = () => {
         {data?.users?.map((food) => (
           <div key={food.id}>
             <div
-              onClick={() => navigate(`/products/${food.id}`)}
+              onClick={() => navigate(`/user/${food.id}`)}
               className="border rounded-2xl shadow-green-500 hover:shadow-2xl cursor-pointer overflow-hidden bg-white transition"
             >
               <img
