@@ -13,7 +13,9 @@ const Home = () => {
         .get(`https://dummyjson.com/products/${id}`)
         .then((res) => setData({ products: [res.data] }));
     } else {
-      axios.get("https://dummyjson.com/products").then((res) => setData(res.data));
+      axios
+        .get("https://dummyjson.com/products")
+        .then((res) => setData(res.data));
     }
   }, [id]);
 
